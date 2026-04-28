@@ -1,1 +1,2 @@
-this is a pharmacy management system , my final year project
+these are the project i worked on while in school
+
