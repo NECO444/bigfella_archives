@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Pharmacy Management System</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">💊</div>
+        <div class="sidebar-title">PharmaCare</div>
+      </div>
+      
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="dashboard.html" class="nav-link active">
+              <span class="nav-icon"></span>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="inventory.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Medicines</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="items.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Items</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="sales.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Sales & Billing</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="customers.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Customers</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="prescriptions.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Prescriptions</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="reports.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Reports</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="settings.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Top Navbar -->
+      <nav class="navbar">
+        <div class="navbar-left">
+          <div class="navbar-title">
+            <h2>Dashboard</h2>
+          </div>
+        </div>
+
+        <div class="navbar-right">
+          <div class="navbar-item notification-badge">
+            <span></span>
+            </span>
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar">JD</div>
+            <div class="user-info">
+              <p style="font-weight: 500;">NECO</p>
+              <p>Pharmacist</p>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Page Content -->
+      <div class="content">
+        <div class="page-header">
+          <h1></h1>
+          <p></p>
+        </div>
+
+        <!-- Alert -->
+        <div class="alert alert-warning" id="expiryAlert">
+        </span>
+          <span id="alertText">Loading alert data...</span>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="grid">
+          <div class="stat-card">
+            <div class="stat-content">
+              <h4>Total Medicines</h4>
+              <p class="stat-number">1,247</p>
+            </div>
+            <div class="stat-icon primary"></div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-content">
+              <h4>Daily Sales</h4>
+              <p class="stat-number">MK 4,850</p>
+            </div>
+            <div class="stat-icon success"></div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-content">
+              <h4>Expiring Soon</h4>
+              <p class="stat-number">5</p>
+            </div>
+            <div class="stat-icon warning"></div>
+          </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid-2">
+          <div class="card">
+            <h3 style="margin-top: 0;">Monthly Sales Trend</h3>
+            <div style="margin-top: 20px; height: 250px; background: linear-gradient(180deg, rgba(14, 165, 165, 0.1) 0%, rgba(14, 165, 165, 0.02) 100%); border-radius: 8px; display: flex; align-items: flex-end; justify-content: space-around; padding: 20px; gap: 10px;">
+              <div style="flex: 1; background: linear-gradient(180deg, #0ea5a5, #06b6d4); border-radius: 4px 4px 0 0; height: 70%; min-height: 50px;" title="Jan"></div>
+              <div style="flex: 1; background: linear-gradient(180deg, #0ea5a5, #06b6d4); border-radius: 4px 4px 0 0; height: 85%; min-height: 50px;" title="Feb"></div>
+              <div style="flex: 1; background: linear-gradient(180deg, #0ea5a5, #06b6d4); border-radius: 4px 4px 0 0; height: 60%; min-height: 50px;" title="Mar"></div>
+              <div style="flex: 1; background: linear-gradient(180deg, #0ea5a5, #06b6d4); border-radius: 4px 4px 0 0; height: 90%; min-height: 50px;" title="Apr"></div>
+              <div style="flex: 1; background: linear-gradient(180deg, #0ea5a5, #06b6d4); border-radius: 4px 4px 0 0; height: 75%; min-height: 50px;" title="May"></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-top: 0;">Stock Status</h3>
+            <div style="margin-top: 20px;">
+              <div style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                  <span>In Stock</span>
+                  <span style="font-weight: 600;">85%</span>
+                </div>
+                <div style="background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden;">
+                  <div style="background: linear-gradient(90deg, #0ea5a5, #06b6d4); height: 100%; width: 85%;"></div>
+                </div>
+              </div>
+              <div style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                  <span>Low Stock</span>
+                  <span style="font-weight: 600;">10%</span>
+                </div>
+                <div style="background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden;">
+                  <div style="background: #f59e0b; height: 100%; width: 10%;"></div>
+                </div>
+              </div>
+              <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                  <span>Out of Stock</span>
+                  <span style="font-weight: 600;">5%</span>
+                </div>
+                <div style="background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden;">
+                  <div style="background: #ef4444; height: 100%; width: 5%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Transactions -->
+        <div class="card" style="margin-top: 32px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+            <h3 style="margin: 0;">Recent Transactions</h3>
+            <a href="transactions.html" style="color: #0ea5a5; font-weight: 500; font-size: 14px;">View All</a>
+          </div>
+
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Customer</th>
+                  <th>Medicine</th>
+                  <th>Qty</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Apr 27, 2026</td>
+                  <td>Ahmed Khan</td>
+                  <td>Aspirin 500mg</td>
+                  <td>2</td>
+                  <td>MK 45.00</td>
+                  <td><span class="status-badge status-active">Completed</span></td>
+                </tr>
+                <tr>
+                  <td>Apr 27, 2026</td>
+                  <td>Fatima Ali</td>
+                  <td>Vitamin D3</td>
+                  <td>1</td>
+                  <td>MK 28.50</td>
+                  <td><span class="status-badge status-active">Completed</span></td>
+                </tr>
+                <tr>
+                  <td>Apr 26, 2026</td>
+                  <td>Muhammad Hassan</td>
+                  <td>Amoxicillin 250mg</td>
+                  <td>3</td>
+                  <td>MK 82.00</td>
+                  <td><span class="status-badge status-active">Completed</span></td>
+                </tr>
+                <tr>
+                  <td>Apr 26, 2026</td>
+                  <td>Aisha Ibrahim</td>
+                  <td>Ibuprofen 200mg</td>
+                  <td>2</td>
+                  <td>MK 35.75</td>
+                  <td><span class="status-badge status-active">Completed</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/database.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script>
+    function loadDashboardData() {
+      // Load Stats
+      const totalItems = db.getTotalMedicines();
+      const totalRevenue = db.getTotalRevenue();
+      const expiringMedicines = db.getExpiringMedicines();
+      const lowStockMedicines = db.getLowStockMedicines();
+
+      // Update alert with live data
+      const alertText = document.getElementById('alertText');
+      if (alertText) {
+        if (expiringMedicines.length > 0) {
+          alertText.textContent = `⚠️ ${expiringMedicines.length} medicine${expiringMedicines.length !== 1 ? 's are' : ' is'} expiring within 30 days`;
+        } else if (lowStockMedicines.length > 0) {
+          alertText.textContent = `⚠️ ${lowStockMedicines.length} medicine${lowStockMedicines.length !== 1 ? 's are' : ' is'} running low on stock`;
+        } else {
+          alertText.textContent = '✅ All systems operational. No alerts.';
+          document.getElementById('expiryAlert').className = 'alert alert-success';
+        }
+      }
+
+      // Update stat cards
+      const totalCard = document.querySelector('.stat-card:nth-child(1) .stat-number');
+      if (totalCard) totalCard.textContent = totalItems.toLocaleString();
+
+      const revenueCard = document.querySelector('.stat-card:nth-child(2) .stat-number');
+      if (revenueCard) revenueCard.textContent = 'MK ' + totalRevenue.toFixed(2);
+
+      const expiringCard = document.querySelector('.stat-card:nth-child(3) .stat-number');
+      if (expiringCard) expiringCard.textContent = expiringMedicines.length;
+
+      // Load recent transactions
+      const recentTransactions = db.getRecentTransactions(4);
+      const tbody = document.querySelector('table tbody');
+      if (tbody) {
+        tbody.innerHTML = '';
+        recentTransactions.forEach(transaction => {
+          const medicinesStr = transaction.medicines.map(m => m.name).join(', ');
+          const date = new Date(transaction.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+          
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${date}</td>
+            <td>${transaction.customer}</td>
+            <td>${medicinesStr}</td>
+            <td>${transaction.medicines.length}</td>
+            <td>MK ${transaction.total.toFixed(2)}</td>
+            <td><span class="status-badge status-active">Completed</span></td>
+          `;
+          tbody.appendChild(row);
+        });
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadDashboardData);
+  </script>
+</html>

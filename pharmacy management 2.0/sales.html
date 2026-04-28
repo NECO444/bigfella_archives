@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales & Billing - Pharmacy Management System</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .sales-container {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 24px;
+    }
+
+    .cart-summary {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+      height: fit-content;
+      border: 1px solid #e2e8f0;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+
+    .item-name {
+      font-weight: 500;
+      flex: 1;
+    }
+
+    .item-remove {
+      background: none;
+      color: #ef4444;
+      cursor: pointer;
+      font-size: 18px;
+      padding: 0 8px;
+    }
+
+    .cart-total {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 2px solid #e2e8f0;
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    .total-amount {
+      display: flex;
+      justify-content: space-between;
+      font-size: 18px;
+      font-weight: 700;
+      color: #0ea5a5;
+      margin-bottom: 16px;
+    }
+
+    .medicine-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .medicine-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .medicine-card:hover {
+      box-shadow: 0 4px 12px rgba(14, 165, 165, 0.2);
+      border-color: #0ea5a5;
+      transform: translateY(-2px);
+    }
+
+    .medicine-card h4 {
+      margin: 0 0 8px 0;
+      font-size: 14px;
+    }
+
+    .medicine-card p {
+      margin: 0 0 12px 0;
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    .medicine-price {
+      font-weight: 700;
+      color: #0ea5a5;
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+
+    .qty-control {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .qty-btn {
+      width: 28px;
+      height: 28px;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      background: white;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qty-btn:hover {
+      background: #f8fafc;
+    }
+
+    .qty-input {
+      width: 40px;
+      text-align: center;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      padding: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .sales-container {
+        grid-template-columns: 1fr;
+      }
+
+      .cart-summary {
+        height: auto;
+      }
+
+      .medicine-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">💊</div>
+        <div class="sidebar-title">PharmaCare</div>
+      </div>
+      
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="dashboard.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="inventory.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Medicines</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="items.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Items</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="sales.html" class="nav-link active">
+              <span class="nav-icon"></span>
+              <span>Sales & Billing</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="customers.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Customers</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="prescriptions.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Prescriptions</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="reports.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Reports</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="settings.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Top Navbar -->
+      <nav class="navbar">
+        <div class="navbar-left">
+          <div class="navbar-title">
+            <h2>Point of Sale</h2>
+          </div>
+        </div>
+
+        <div class="navbar-right">
+          <div class="navbar-item notification-badge">
+            <span></span>
+            </span>
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar">JD</div>
+            <div class="user-info">
+              <p style="font-weight: 500;">John Doe</p>
+              <p>Pharmacist</p>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Page Content -->
+      <div class="content">
+        <div class="page-header">
+          <h1>Sales & Billing</h1>
+        </div>
+
+        <div class="sales-container">
+          <!-- Main Sales Area -->
+          <div>
+            <!-- Customer Info -->
+            <div class="card" style="margin-bottom: 24px;">
+              <h3 style="margin-top: 0; margin-bottom: 16px;">Customer Information</h3>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="customerName">Customer Name</label>
+                  <input type="text" id="customerName" class="form-control" placeholder="Patient name">
+                </div>
+                <div class="form-group">
+                  <label for="customerPhone">Phone Number</label>
+                  <input type="tel" id="customerPhone" class="form-control" placeholder="+265 (0) 000-0000">
+                </div>
+              </div>
+            </div>
+
+            <!-- Medicine & Items Selection -->
+            <div class="card">
+              <h3 style="margin-top: 0; margin-bottom: 16px;">Select Products</h3>
+              <div class="search-bar">
+                <input 
+                  type="text" 
+                  class="search-input" 
+                  placeholder="Search medicines or items..."
+                  id="medicinSearch"
+                  style="flex: 1; min-width: auto;"
+                >
+              </div>
+
+              <div class="medicine-grid" id="medicineGrid">
+                <!-- Populated by JavaScript -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Cart Summary -->
+          <div class="cart-summary">
+            <h3 style="margin-top: 0;">Shopping Cart</h3>
+            <div id="cartItems"></div>
+
+            <div class="cart-total">
+              <div class="total-row">
+                <span>Subtotal:</span>
+                <span id="subtotal">MK 0.00</span>
+              </div>
+              <div class="total-row">
+                <span>Tax (10%):</span>
+                <span id="tax">MK 0.00</span>
+              </div>
+              <div class="total-amount">
+                <span>Total:</span>
+                <span id="total">MK 0.00</span>
+              </div>
+
+              <div class="form-group">
+                <label for="paymentMethod">Payment Method</label>
+                <select id="paymentMethod" class="form-control">
+                  <option>Cash</option>
+                  <option>Card</option>
+                  <option>Check</option>
+                  <option>Online</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="discount">Discount (%)</label>
+                <input 
+                  type="number" 
+                  id="discount" 
+                  class="form-control" 
+                  value="0" 
+                  min="0" 
+                  max="100"
+                  onchange="calculateTotal()"
+                >
+              </div>
+
+              <button class="btn btn-primary btn-block" style="margin-bottom: 8px;" onclick="completePayment()">
+                 Complete Payment
+              </button>
+              <button class="btn btn-secondary btn-block" onclick="printReceipt()">
+                🖨️ Print Receipt
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/database.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script>
+    let cart = {};
+    let lastTransaction = null;
+
+    function loadMedicines() {
+      const medicines = db.getMedicines();
+      const items = db.getItems();
+      const grid = document.getElementById('medicineGrid');
+      grid.innerHTML = '';
+
+      // Load Medicines
+      medicines.forEach(medicine => {
+        if (medicine.quantity > 0) {
+          const medicineNameParts = medicine.name.split(' ');
+          const displayName = medicineNameParts.slice(0, -1).join(' ');
+          const dosage = medicineNameParts[medicineNameParts.length - 1];
+
+          const card = document.createElement('div');
+          card.className = 'medicine-card';
+          card.onclick = () => addToCart(medicine.name, medicine.price, 'medicine', medicine.id);
+          card.innerHTML = `
+            <h4>${displayName}</h4>
+            <p>${dosage}</p>
+            <div class="medicine-price">MK ${medicine.price.toFixed(2)}</div>
+            <div class="qty-control">
+              <span>Stock: ${medicine.quantity}</span>
+            </div>
+          `;
+          grid.appendChild(card);
+        }
+      });
+
+      // Load Items
+      items.forEach(item => {
+        if (item.quantity > 0) {
+          const card = document.createElement('div');
+          card.className = 'medicine-card';
+          card.onclick = () => addToCart(item.name, item.price, 'item', item.id);
+          card.innerHTML = `
+            <h4 style="font-size: 14px;">${item.name}</h4>
+            <p style="font-size: 11px; color: #0ea5a5;">${item.category}</p>
+            <div class="medicine-price">MK ${item.price.toFixed(2)}</div>
+            <div class="qty-control">
+              <span>Stock: ${item.quantity}</span>
+            </div>
+          `;
+          grid.appendChild(card);
+        }
+      });
+    }
+
+    function addToCart(productName, price, type = 'medicine', productId) {
+      let product = null;
+      
+      if (type === 'item') {
+        product = db.getItemById(productId);
+      } else {
+        product = db.getMedicines().find(m => m.name === productName);
+      }
+
+      if (!product || product.quantity <= 0) {
+        showNotification('⚠️ Product is out of stock', 'warning');
+        return;
+      }
+
+      if (!cart[productName]) {
+        cart[productName] = { price, quantity: 0, productId, type };
+      }
+      if (cart[productName].quantity < product.quantity) {
+        cart[productName].quantity += 1;
+        showNotification(`✓ Added to cart`, 'success');
+        updateCart();
+      } else {
+        showNotification('⚠️ Insufficient stock', 'warning');
+      }
+    }
+
+    function removeFromCart(medicineName) {
+      delete cart[medicineName];
+      updateCart();
+    }
+
+    function updateQuantity(productName, quantity) {
+      const cartItem = cart[productName];
+      let product = null;
+
+      if (cartItem.type === 'item') {
+        product = db.getItemById(cartItem.productId);
+      } else {
+        product = db.getMedicines().find(m => m.name === productName);
+      }
+
+      if (quantity <= 0) {
+        removeFromCart(productName);
+      } else if (quantity <= product.quantity) {
+        cart[productName].quantity = parseInt(quantity);
+        updateCart();
+      } else {
+        showNotification('⚠️ Quantity exceeds available stock', 'warning');
+      }
+    }
+
+    function updateCart() {
+      const cartItemsDiv = document.getElementById('cartItems');
+      cartItemsDiv.innerHTML = '';
+
+      for (const [name, data] of Object.entries(cart)) {
+        const item = document.createElement('div');
+        item.className = 'cart-item';
+        item.innerHTML = `
+          <div>
+            <div class="item-name">${name}</div>
+            <div style="font-size: 12px; color: #64748b;">MK ${data.price.toFixed(2)} each</div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div class="qty-control">
+              <button class="qty-btn" onclick="updateQuantity('${name}', ${data.quantity - 1})">−</button>
+              <span style="width: 30px; text-align: center;">${data.quantity}</span>
+              <button class="qty-btn" onclick="updateQuantity('${name}', ${data.quantity + 1})">+</button>
+            </div>
+            <button class="item-remove" onclick="removeFromCart('${name}')">✕</button>
+          </div>
+        `;
+        cartItemsDiv.appendChild(item);
+      }
+
+      calculateTotal();
+    }
+
+    function calculateTotal() {
+      let subtotal = 0;
+      for (const data of Object.values(cart)) {
+        subtotal += data.price * data.quantity;
+      }
+
+      const discountPercent = parseFloat(document.getElementById('discount').value) || 0;
+      const discountAmount = subtotal * (discountPercent / 100);
+      const taxAmount = (subtotal - discountAmount) * 0.1;
+      const total = subtotal - discountAmount + taxAmount;
+
+      document.getElementById('subtotal').textContent = 'MK ' + subtotal.toFixed(2);
+      document.getElementById('tax').textContent = 'MK ' + taxAmount.toFixed(2);
+      document.getElementById('total').textContent = 'MK ' + total.toFixed(2);
+    }
+
+    function completePayment() {
+      const customerName = document.getElementById('customerName').value.trim();
+      const customerPhone = document.getElementById('customerPhone').value.trim();
+      const paymentMethod = document.getElementById('paymentMethod').value;
+      const cartSize = Object.keys(cart).length;
+      const totalAmount = document.getElementById('total').textContent;
+
+      if (cartSize === 0) {
+        alert('⚠️ Shopping cart is empty. Please add medicines first.');
+        return;
+      }
+
+      if (!customerName) {
+        alert('⚠️ Please enter customer name.');
+        return;
+      }
+
+      // Extract amounts
+      const subtotalStr = document.getElementById('subtotal').textContent.replace('MK ', '');
+      const taxStr = document.getElementById('tax').textContent.replace('MK ', '');
+      const totalStr = totalAmount.replace('MK ', '');
+
+      // Process payment
+      const confirmPayment = confirm(
+        `Transaction Summary:\n\n` +
+        `Customer: ${customerName}\n` +
+        `Phone: ${customerPhone}\n` +
+        `Items: ${cartSize}\n` +
+        `Total: ${totalAmount}\n` +
+        `Payment Method: ${paymentMethod}\n\n` +
+        `Proceed with payment?`
+      );
+
+      if (confirmPayment) {
+        // Build transaction products list
+        const medicines = [];
+        for (const [name, data] of Object.entries(cart)) {
+          medicines.push({
+            name,
+            quantity: data.quantity,
+            price: data.price,
+            type: data.type
+          });
+          
+          // Update inventory based on type
+          if (data.type === 'item') {
+            db.updateItemQuantity(name, -data.quantity);
+          } else {
+            db.updateMedicineQuantity(name, -data.quantity);
+          }
+        }
+
+        // Record transaction
+        const transaction = db.addTransaction({
+          customer: customerName,
+          phone: customerPhone,
+          medicines,
+          subtotal: parseFloat(subtotalStr),
+          tax: parseFloat(taxStr),
+          total: parseFloat(totalStr),
+          paymentMethod
+        });
+
+        // Store last transaction for printing
+        lastTransaction = {
+          ...transaction,
+          customerName,
+          customerPhone,
+          paymentMethod,
+          subtotal: parseFloat(subtotalStr),
+          tax: parseFloat(taxStr),
+          total: parseFloat(totalStr),
+          medicines
+        };
+
+        // Payment successful
+        showNotification('✅ Payment completed successfully!', 'success');
+        alert('✅ Payment completed successfully!\n\nTransaction ID: TXN-' + transaction.id + '\n\nYou can now print the receipt.');
+        
+        // Clear cart
+        cart = {};
+        document.getElementById('customerName').value = '';
+        document.getElementById('customerPhone').value = '';
+        document.getElementById('discount').value = '0';
+        updateCart();
+        loadMedicines();
+      }
+    }
+
+    function printReceipt() {
+      let receiptData = null;
+      let cartSize = Object.keys(cart).length;
+
+      // Use last transaction if cart is empty
+      if (cartSize === 0 && lastTransaction) {
+        receiptData = lastTransaction;
+      } else if (cartSize === 0) {
+        alert('⚠️ No items to print. Please complete a payment first or add items to cart.');
+        return;
+      } else {
+        // Use current cart
+        const customerName = document.getElementById('customerName').value.trim() || 'Guest';
+        const customerPhone = document.getElementById('customerPhone').value.trim() || 'N/A';
+        const paymentMethod = document.getElementById('paymentMethod').value;
+        const subtotal = document.getElementById('subtotal').textContent.replace('MK ', '');
+        const tax = document.getElementById('tax').textContent.replace('MK ', '');
+        const total = document.getElementById('total').textContent.replace('MK ', '');
+
+        receiptData = {
+          customerName,
+          customerPhone,
+          paymentMethod,
+          subtotal,
+          tax,
+          total,
+          medicines: cart
+        };
+      }
+
+      // Build receipt HTML
+      let receiptHTML = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>Pharmacy Receipt</title>
+          <style>
+            body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f0f0f0; }
+            .receipt { max-width: 400px; margin: 0 auto; background: white; padding: 20px; border: 1px solid #ddd; }
+            .header { text-align: center; margin-bottom: 20px; border-bottom: 2px solid #000; padding-bottom: 10px; }
+            .header h2 { margin: 0; }
+            .header p { margin: 5px 0; font-size: 12px; }
+            .customer-info { margin: 15px 0; font-size: 13px; }
+            .customer-info p { margin: 3px 0; }
+            .items { margin: 15px 0; }
+            .item { display: flex; justify-content: space-between; font-size: 12px; margin: 5px 0; }
+            .item-name { flex: 1; }
+            .item-qty { width: 40px; text-align: center; }
+            .item-price { width: 60px; text-align: right; }
+            .divider { border-bottom: 1px dashed #000; margin: 10px 0; }
+            .totals { margin: 15px 0; }
+            .total-row { display: flex; justify-content: space-between; font-size: 13px; margin: 5px 0; }
+            .total-amount { display: flex; justify-content: space-between; font-weight: bold; font-size: 14px; margin-top: 10px; }
+            .footer { text-align: center; margin-top: 20px; font-size: 11px; color: #666; }
+            @media print { body { background: white; } .receipt { border: none; box-shadow: none; } }
+          </style>
+        </head>
+        <body onload="window.print(); setTimeout(function() { window.close(); }, 500);">
+          <div class="receipt">
+            <div class="header">
+              <h2>💊 PharmaCare</h2>
+              <p>Modern Pharmacy Management System</p>
+              <p>Receipt Date: ${new Date().toLocaleString()}</p>
+            </div>
+
+            <div class="customer-info">
+              <p><strong>Customer:</strong> ${receiptData.customerName}</p>
+              <p><strong>Phone:</strong> ${receiptData.customerPhone}</p>
+              <p><strong>Payment Method:</strong> ${receiptData.paymentMethod}</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="items">
+              <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 12px; margin-bottom: 5px;">
+                <div style="flex: 1;">Medicine</div>
+                <div style="width: 40px; text-align: center;">Qty</div>
+                <div style="width: 60px; text-align: right;">Amount</div>
+              </div>
+      `;
+
+      // Add cart items to receipt
+      if (receiptData.medicines) {
+        if (typeof receiptData.medicines === 'object' && !Array.isArray(receiptData.medicines)) {
+          // Cart object format
+          for (const [name, data] of Object.entries(receiptData.medicines)) {
+            const itemTotal = (data.price * data.quantity).toFixed(2);
+            receiptHTML += `
+              <div class="item">
+                <div class="item-name">${name}</div>
+                <div class="item-qty">${data.quantity}</div>
+                <div class="item-price">MK ${itemTotal}</div>
+              </div>
+            `;
+          }
+        } else if (Array.isArray(receiptData.medicines)) {
+          // Transaction array format
+          for (const item of receiptData.medicines) {
+            const itemTotal = (item.price * item.quantity).toFixed(2);
+            receiptHTML += `
+              <div class="item">
+                <div class="item-name">${item.name}</div>
+                <div class="item-qty">${item.quantity}</div>
+                <div class="item-price">MK ${itemTotal}</div>
+              </div>
+            `;
+          }
+        }
+      }
+
+      receiptHTML += `
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="totals">
+              <div class="total-row">
+                <span>Subtotal:</span>
+                <span>MK ${receiptData.subtotal}</span>
+              </div>
+              <div class="total-row">
+                <span>Tax (10%):</span>
+                <span>MK ${receiptData.tax}</span>
+              </div>
+              <div class="total-amount">
+                <span>Total Amount:</span>
+                <span>MK ${receiptData.total}</span>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="footer">
+              <p>Thank you for your purchase!</p>
+              <p>🙏 Please come again</p>
+            </div>
+          </div>
+        </body>
+        </html>
+      `;
+
+      // Open print window
+      const printWindow = window.open('', '_blank', 'height=600,width=800');
+      printWindow.document.write(receiptHTML);
+      printWindow.document.close();
+    }
+
+    // Load medicines on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      loadMedicines();
+
+      // Search functionality
+      document.getElementById('medicinSearch').addEventListener('keyup', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        const medicines = db.getMedicines();
+        const items = db.getItems();
+        const grid = document.getElementById('medicineGrid');
+        grid.innerHTML = '';
+
+        // Filter and display medicines
+        medicines.filter(m => m.quantity > 0 && m.name.toLowerCase().includes(searchTerm)).forEach(medicine => {
+          const medicineNameParts = medicine.name.split(' ');
+          const displayName = medicineNameParts.slice(0, -1).join(' ');
+          const dosage = medicineNameParts[medicineNameParts.length - 1];
+
+          const card = document.createElement('div');
+          card.className = 'medicine-card';
+          card.onclick = () => addToCart(medicine.name, medicine.price, 'medicine', medicine.id);
+          card.innerHTML = `
+            <h4>${displayName}</h4>
+            <p>${dosage}</p>
+            <div class="medicine-price">MK ${medicine.price.toFixed(2)}</div>
+            <div class="qty-control">
+              <span>Stock: ${medicine.quantity}</span>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+
+        // Filter and display items
+        items.filter(i => i.quantity > 0 && i.name.toLowerCase().includes(searchTerm)).forEach(item => {
+          const card = document.createElement('div');
+          card.className = 'medicine-card';
+          card.onclick = () => addToCart(item.name, item.price, 'item', item.id);
+          card.innerHTML = `
+            <h4 style="font-size: 14px;">${item.name}</h4>
+            <p style="font-size: 11px; color: #0ea5a5;">${item.category}</p>
+            <div class="medicine-price">MK ${item.price.toFixed(2)}</div>
+            <div class="qty-control">
+              <span>Stock: ${item.quantity}</span>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

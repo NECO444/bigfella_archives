@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports - Pharmacy Management System</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .chart-container {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      padding: 20px;
+      gap: 10px;
+      height: 280px;
+    }
+
+    .chart-bar {
+      flex: 1;
+      background: linear-gradient(180deg, #0ea5a5, #06b6d4);
+      border-radius: 4px 4px 0 0;
+      min-width: 40px;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .chart-bar:hover {
+      filter: brightness(1.1);
+    }
+
+    .chart-label {
+      position: absolute;
+      bottom: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      font-weight: 500;
+      width: 100%;
+      text-align: center;
+    }
+
+    .chart-value {
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .report-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .report-card h3 {
+      margin-top: 0;
+    }
+
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .metric-row:last-child {
+      border-bottom: none;
+    }
+
+    .metric-label {
+      font-size: 14px;
+      color: #64748b;
+    }
+
+    .metric-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: #0ea5a5;
+    }
+
+    .trend-up {
+      color: #10b981;
+      font-size: 12px;
+      margin-left: 8px;
+    }
+
+    .trend-down {
+      color: #ef4444;
+      font-size: 12px;
+      margin-left: 8px;
+    }
+
+    @media (max-width: 1024px) {
+      .report-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .chart-container {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">💊</div>
+        <div class="sidebar-title">PharmaCare</div>
+      </div>
+      
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="dashboard.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="inventory.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Medicines</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="items.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Items</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="sales.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Sales & Billing</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="customers.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Customers</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="prescriptions.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Prescriptions</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="reports.html" class="nav-link active">
+              <span class="nav-icon"></span>
+              <span>Reports</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="settings.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Top Navbar -->
+      <nav class="navbar">
+        <div class="navbar-left">
+          <div class="navbar-title">
+            <h2>Reports & Analytics</h2>
+          </div>
+        </div>
+
+        <div class="navbar-right">
+          <div class="navbar-item notification-badge">
+            <span></span>
+            </span>
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar">JD</div>
+            <div class="user-info">
+              <p style="font-weight: 500;">John Doe</p>
+              <p>Pharmacist</p>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Page Content -->
+      <div class="content">
+        <div class="page-header">
+          <h1>Reports & Analytics</h1>
+        </div>
+
+        <!-- Filter Options -->
+        <div class="search-bar" style="margin-bottom: 32px;">
+          <select class="filter-select">
+            <option>Last 30 Days</option>
+            <option>Last 90 Days</option>
+            <option>Last Year</option>
+            <option>Custom Range</option>
+          </select>
+          <button class="btn btn-primary" onclick="exportReportToCSV()">
+             Export Report
+          </button>
+        </div>
+
+        <!-- Key Metrics -->
+        <div class="report-grid">
+          <div class="card report-card">
+            <h3>Sales Performance</h3>
+            <div class="metric-row">
+              <span class="metric-label">Total Revenue</span>
+              <span class="metric-value">MK 14,520 <span class="trend-up">↑ 12%</span></span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-label">Avg. Daily Sales</span>
+              <span class="metric-value">MK 484</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-label">Total Transactions</span>
+              <span class="metric-value">145</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-label">Avg. Transaction</span>
+              <span class="metric-value">MK 100.14</span>
+            </div>
+          </div>
+
+          <div class="card report-card">
+            <h3>Inventory Health</h3>
+            <div class="metric-row">
+              <span class="metric-label">Total Items</span>
+              <span class="metric-value">1,247</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-label">Low Stock Items</span>
+              <span class="metric-value">24 <span class="trend-down">⚠️</span></span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-label">Expired Items</span>
+              <span class="metric-value">3</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-label">Inventory Value</span>
+              <span class="metric-value">MK 42,850</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sales Trend Chart -->
+        <div class="card" style="margin-bottom: 32px;">
+          <h3 style="margin-top: 0;">Monthly Sales Trend</h3>
+          <div style="position: relative; height: 320px; margin-top: 40px;">
+            <div class="chart-container">
+              <div class="chart-bar" style="height: 60%;">
+                <div class="chart-value">MK 8,640</div>
+                <div class="chart-label">January</div>
+              </div>
+              <div class="chart-bar" style="height: 75%;">
+                <div class="chart-value">MK 10,800</div>
+                <div class="chart-label">February</div>
+              </div>
+              <div class="chart-bar" style="height: 55%;">
+                <div class="chart-value">MK 7,920</div>
+                <div class="chart-label">March</div>
+              </div>
+              <div class="chart-bar" style="height: 85%;">
+                <div class="chart-value">MK 12,240</div>
+                <div class="chart-label">April</div>
+              </div>
+              <div class="chart-bar" style="height: 70%;">
+                <div class="chart-value">MK 10,080</div>
+                <div class="chart-label">May</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top Medicines -->
+        <div class="report-grid">
+          <div class="card report-card">
+            <h3>Top Selling Medicines</h3>
+            <div class="metric-row">
+              <span class="metric-label">1. Aspirin 500mg</span>
+              <span class="metric-value">284 units</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-label">2. Paracetamol 500mg</span>
+              <span class="metric-value">156 units</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-label">3. Vitamin D3</span>
+              <span class="metric-value">92 units</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-label">4. Ibuprofen 200mg</span>
+              <span class="metric-value">87 units</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-label">5. Metformin 500mg</span>
+              <span class="metric-value">64 units</span>
+            </div>
+          </div>
+
+          <div class="card report-card">
+            <h3>Customer Insights</h3>
+            <div class="metric-row">
+              <span class="metric-label">Total Customers</span>
+              <span class="metric-value">487</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-label">Returning Customers</span>
+              <span class="metric-value">203 (42%)</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-label">New Customers</span>
+              <span class="metric-value">67 (14%)</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-label">Avg. Customer Spend</span>
+              <span class="metric-value">MK 25.32</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-label">Customer Retention</span>
+              <span class="metric-value">68% <span class="trend-up">↑ 5%</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stock Analysis -->
+        <div class="card" style="margin-top: 32px;">
+          <h3 style="margin-top: 0;">Stock Movement Analysis</h3>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Medicine Name</th>
+                  <th>Units Sold</th>
+                  <th>Units Purchased</th>
+                  <th>Current Stock</th>
+                  <th>Turnover Rate</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Aspirin 500mg</td>
+                  <td>284</td>
+                  <td>300</td>
+                  <td>250</td>
+                  <td>113.6%</td>
+                  <td><span class="status-badge status-active">Healthy</span></td>
+                </tr>
+                <tr>
+                  <td>Vitamin D3</td>
+                  <td>92</td>
+                  <td>100</td>
+                  <td>45</td>
+                  <td>204.4%</td>
+                  <td><span class="status-badge status-expiring">Monitor</span></td>
+                </tr>
+                <tr>
+                  <td>Paracetamol 500mg</td>
+                  <td>156</td>
+                  <td>180</td>
+                  <td>150</td>
+                  <td>104%</td>
+                  <td><span class="status-badge status-active">Healthy</span></td>
+                </tr>
+                <tr>
+                  <td>Ibuprofen 200mg</td>
+                  <td>87</td>
+                  <td>120</td>
+                  <td>320</td>
+                  <td>27.2%</td>
+                  <td><span class="status-badge status-active">Over Stock</span></td>
+                </tr>
+                <tr>
+                  <td>Amoxicillin 250mg</td>
+                  <td>64</td>
+                  <td>85</td>
+                  <td>8</td>
+                  <td>800%</td>
+                  <td><span class="status-badge status-expired">Urgent</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/database.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script>
+    function loadReportsData() {
+      // Load Sales Performance metrics
+      const totalRevenue = db.getTotalRevenue();
+      const totalTransactions = db.getTotalTransactions();
+      const avgDailySales = totalTransactions > 0 ? (totalRevenue / 30).toFixed(2) : 0;
+      const avgTransaction = totalTransactions > 0 ? (totalRevenue / totalTransactions).toFixed(2) : 0;
+
+      // Load Inventory Health metrics
+      const totalItems = db.getTotalMedicines();
+      const lowStockItems = db.getLowStockMedicines().length;
+      const expiredItems = db.getMedicines().filter(m => new Date(m.expiryDate) < new Date()).length;
+      const totalValue = db.getMedicines().reduce((sum, m) => sum + (m.price * m.quantity), 0);
+
+      // Update stat cards
+      const metrics = document.querySelectorAll('.metric-value');
+      if (metrics.length >= 4) {
+        metrics[0].innerHTML = `MK ${totalRevenue.toFixed(2)} <span class="trend-up">↑ 12%</span>`;
+        metrics[1].innerHTML = `MK ${avgDailySales}`;
+        metrics[2].innerHTML = `${totalTransactions}`;
+        metrics[3].innerHTML = `MK ${avgTransaction}`;
+      }
+
+      const healthMetrics = document.querySelectorAll('.report-card:nth-child(2) .metric-value');
+      if (healthMetrics.length >= 4) {
+        healthMetrics[0].textContent = totalItems;
+        healthMetrics[1].textContent = `${lowStockItems} ${lowStockItems > 0 ? '⚠️' : ''}`;
+        healthMetrics[2].textContent = expiredItems;
+        healthMetrics[3].textContent = `MK ${totalValue.toFixed(2)}`;
+      }
+
+      // Load Top Selling Medicines
+      const topMedicines = db.getTopMedicines(5);
+      const topMedicinesDiv = document.querySelectorAll('.report-card')[2]?.querySelectorAll('.metric-row');
+      if (topMedicinesDiv && topMedicinesDiv.length > 0) {
+        const container = topMedicinesDiv[0].parentElement;
+        container.innerHTML = '<h3 style="margin-top: 0;">Top Selling Medicines</h3>';
+        topMedicines.forEach((med, index) => {
+          const row = document.createElement('div');
+          row.className = 'metric-row';
+          row.innerHTML = `
+            <span class="metric-label">${index + 1}. ${med.name}</span>
+            <span class="metric-value">${med.quantity} units</span>
+          `;
+          container.appendChild(row);
+        });
+      }
+
+      // Load Customer Insights
+      const totalCustomers = db.getTotalCustomers();
+      const customers = db.getCustomers();
+      const returningCustomers = customers.filter(c => c.visits > 1).length;
+      const newCustomers = customers.filter(c => c.visits === 1).length;
+      const avgSpend = customers.length > 0 ? (totalRevenue / customers.length).toFixed(2) : 0;
+
+      const customerMetrics = document.querySelectorAll('.report-card')[3]?.querySelectorAll('.metric-value');
+      if (customerMetrics && customerMetrics.length >= 4) {
+        customerMetrics[0].textContent = totalCustomers;
+        customerMetrics[1].textContent = `${returningCustomers} (${((returningCustomers/totalCustomers)*100).toFixed(0)}%)`;
+        customerMetrics[2].textContent = `${newCustomers} (${((newCustomers/totalCustomers)*100).toFixed(0)}%)`;
+        customerMetrics[3].textContent = `MK ${avgSpend}`;
+        customerMetrics[4].innerHTML = `${(returningCustomers > 0 ? 68 : 50)}% <span class="trend-up">↑ 5%</span>`;
+      }
+
+      // Load Stock Movement table
+      const topSelling = db.getTopMedicines(5);
+      const stockTable = document.querySelector('table:last-of-type tbody');
+      if (stockTable) {
+        stockTable.innerHTML = '';
+        topSelling.forEach(med => {
+          const medicine = db.getMedicines().find(m => m.name === med.name);
+          if (medicine) {
+            const turnover = ((med.quantity / medicine.quantity) * 100).toFixed(1);
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${med.name}</td>
+              <td>${med.quantity}</td>
+              <td>${medicine.quantity}</td>
+              <td>${medicine.quantity}</td>
+              <td>${turnover}%</td>
+              <td><span class="status-badge status-active">Healthy</span></td>
+            `;
+            stockTable.appendChild(row);
+          }
+        });
+      }
+    }
+
+    function exportReportToCSV() {
+      const timestamp = new Date().toISOString().split('T')[0];
+      const reportData = [
+        ['Pharmacy Report - ' + timestamp],
+        [],
+        ['SALES PERFORMANCE'],
+        ['Metric', 'Value'],
+        ['Total Revenue', 'MK ' + db.getTotalRevenue().toFixed(2)],
+        ['Total Transactions', db.getTotalTransactions()],
+        ['Average Daily Sales', 'MK ' + (db.getTotalRevenue() / 30).toFixed(2)],
+        ['Average Transaction', 'MK ' + (db.getTotalRevenue() / db.getTotalTransactions()).toFixed(2)],
+        [],
+        ['INVENTORY HEALTH'],
+        ['Metric', 'Value'],
+        ['Total Items', db.getTotalMedicines()],
+        ['Low Stock Items', db.getLowStockMedicines().length],
+        ['Expired Items', db.getMedicines().filter(m => new Date(m.expiryDate) < new Date()).length],
+        ['Total Inventory Value', 'MK ' + db.getMedicines().reduce((sum, m) => sum + (m.price * m.quantity), 0).toFixed(2)],
+        [],
+        ['TOP SELLING MEDICINES'],
+        ['Rank', 'Medicine Name', 'Units Sold'],
+      ];
+
+      const topMedicines = db.getTopMedicines(5);
+      topMedicines.forEach((med, index) => {
+        reportData.push([index + 1, med.name, med.quantity]);
+      });
+
+      reportData.push([]);
+      reportData.push(['GENERATED ON', new Date().toLocaleString()]);
+
+      let csvContent = reportData.map(row => 
+        row.map(cell => '"' + String(cell).replace(/"/g, '""') + '"').join(',')
+      ).join('\n');
+
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      const url = URL.createObjectURL(blob);
+      link.setAttribute('href', url);
+      link.setAttribute('download', `pharmacy-report-${timestamp}.csv`);
+      link.click();
+      showNotification('✅ Report exported successfully!', 'success');
+    }
+
+    document.addEventListener('DOMContentLoaded', loadReportsData);
+  </script>
+</html>

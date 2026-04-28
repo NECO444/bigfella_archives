@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pharmacy Management System - Login</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .login-error {
+      color: #ef4444;
+      font-size: 13px;
+      margin-top: 8px;
+      display: none;
+    }
+    .login-info {
+      background: #e0f2fe;
+      border-left: 4px solid #0ea5a5;
+      padding: 12px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      font-size: 12px;
+      color: #0c4a6e;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-header">
+        <div class="logo">💊</div>
+        <h1>PharmaCare</h1>
+        <p>Modern Pharmacy Management System</p>
+      </div>
+
+      <!-- Demo Credentials Info -->
+      <div class="login-info">
+        <strong>Demo Credentials:</strong><br>
+        Admin: admin / admin123<br>
+        Pharmacist: pharmacist / pharm123<br>
+        Cashier: cashier / cash123
+      </div>
+
+      <form class="login-form" id="loginForm">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input 
+            type="text" 
+            id="username" 
+            name="username"
+            placeholder="Enter your username"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input 
+            type="password" 
+            id="password" 
+            name="password"
+            placeholder="Enter your password"
+            required
+          >
+        </div>
+
+        <div class="login-error" id="loginError"></div>
+
+        <div class="form-actions">
+          <label class="remember-me">
+            <input type="checkbox" name="remember" id="remember">
+            <span>Remember me</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-login">Sign In</button>
+      </form>
+
+      <div class="login-footer">
+        System Administrator: <a href="#support">Contact Support</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/database.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      const loginError = document.getElementById('loginError');
+
+      if (!username || !password) {
+        loginError.textContent = '❌ Please enter username and password';
+        loginError.style.display = 'block';
+        return;
+      }
+
+      if (loginUser(username, password)) {
+        // Remember me functionality
+        if (document.getElementById('remember').checked) {
+          localStorage.setItem('pharmacy_remember_me', 'true');
+        }
+        loginError.style.display = 'none';
+        window.location.href = 'dashboard.html';
+      } else {
+        loginError.textContent = '❌ Invalid username or password';
+        loginError.style.display = 'block';
+      }
+    });
+
+    // Don't check authentication on login page
+    if (window.location.pathname.includes('index.html')) {
+      // Redirect to dashboard if already logged in
+      if (isLoggedIn()) {
+        window.location.href = 'dashboard.html';
+      }
+    }
+  </script>
+</body>
+</html>

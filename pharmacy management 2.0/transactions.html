@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transactions - Pharmacy Management System</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .filters-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+      padding: 16px;
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .filter-group label {
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .filter-group input,
+    .filter-group select {
+      padding: 8px 12px;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .stats-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: #0ea5a5;
+    }
+
+    .transaction-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+      transition: all 0.3s;
+    }
+
+    .transaction-card:hover {
+      box-shadow: 0 4px 12px rgba(14, 165, 165, 0.1);
+      border-color: #0ea5a5;
+    }
+
+    .transaction-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 12px;
+    }
+
+    .transaction-id {
+      font-weight: 600;
+      color: #0ea5a5;
+    }
+
+    .transaction-date {
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    .transaction-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .detail-item {
+      font-size: 13px;
+    }
+
+    .detail-label {
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    .detail-value {
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .medicines-list {
+      background: #f8fafc;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    .medicine-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .medicine-item:last-child {
+      border-bottom: none;
+    }
+
+    .medicine-info {
+      flex: 1;
+    }
+
+    .medicine-amount {
+      font-weight: 600;
+      color: #0ea5a5;
+    }
+
+    .transaction-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .transaction-total {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0ea5a5;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .no-data {
+      text-align: center;
+      padding: 40px;
+      color: #64748b;
+    }
+
+    .no-data svg {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .pagination button {
+      padding: 8px 12px;
+      border: 1px solid #e2e8f0;
+      background: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .pagination button.active {
+      background: #0ea5a5;
+      color: white;
+      border-color: #0ea5a5;
+    }
+
+    .pagination button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">💊</div>
+        <div class="sidebar-title">PharmaCare</div>
+      </div>
+      
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="dashboard.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="inventory.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Inventory</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="sales.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Sales & Billing</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="customers.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Customers</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="reports.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Reports</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="settings.html" class="nav-link">
+              <span class="nav-icon"></span>
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Top Navbar -->
+      <nav class="navbar">
+        <div class="navbar-left">
+          <div class="navbar-title">
+            <h2>Transaction History</h2>
+          </div>
+        </div>
+
+        <div class="navbar-right">
+          <div class="navbar-item notification-badge">
+            <span></span>
+            </span>
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar">JD</div>
+            <div class="user-info">
+              <p style="font-weight: 500;">John Doe</p>
+              <p>Pharmacist</p>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Page Content -->
+      <div class="content">
+        <div class="page-header">
+          <h1>All Transactions</h1>
+          <p>View and manage all sales transactions</p>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats-cards" id="statsSection">
+          <div class="stat-card">
+            <div class="stat-label">Total Transactions</div>
+            <div class="stat-value" id="totalTransactions">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Total Revenue</div>
+            <div class="stat-value" id="totalRevenue">MK 0.00</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Average Transaction</div>
+            <div class="stat-value" id="avgTransaction">MK 0.00</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Total Quantity Sold</div>
+            <div class="stat-value" id="totalQuantity">0</div>
+          </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters-section">
+          <div class="filter-group">
+            <label for="searchCustomer">Search Customer</label>
+            <input type="text" id="searchCustomer" placeholder="Name or phone...">
+          </div>
+          <div class="filter-group">
+            <label for="filterPaymentMethod">Payment Method</label>
+            <select id="filterPaymentMethod">
+              <option value="">All Methods</option>
+              <option value="Cash">Cash</option>
+              <option value="Card">Card</option>
+              <option value="Check">Check</option>
+              <option value="Online">Online</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="filterStartDate">From Date</label>
+            <input type="date" id="filterStartDate">
+          </div>
+          <div class="filter-group">
+            <label for="filterEndDate">To Date</label>
+            <input type="date" id="filterEndDate">
+          </div>
+          <div class="filter-group" style="justify-content: flex-end;">
+            <button class="btn btn-primary" onclick="applyFilters()" style="align-self: flex-end;">
+              🔍 Apply Filters
+            </button>
+            <button class="btn btn-secondary" onclick="resetFilters()" style="align-self: flex-end; margin-left: 8px;">
+              ↻ Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- Transactions List -->
+        <div class="card">
+          <h3 style="margin-top: 0; margin-bottom: 20px;">Transactions</h3>
+          <div id="transactionsList"></div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="paginationSection"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/database.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script>
+    let filteredTransactions = [];
+    let currentPage = 1;
+    const itemsPerPage = 10;
+
+    function loadTransactions() {
+      const allTransactions = db.getTransactions();
+      filteredTransactions = [...allTransactions].reverse();
+      updateStats();
+      displayTransactions();
+    }
+
+    function updateStats() {
+      const allTransactions = db.getTransactions();
+      
+      let totalRevenue = 0;
+      let totalQty = 0;
+
+      allTransactions.forEach(t => {
+        totalRevenue += t.total;
+        if (t.medicines) {
+          t.medicines.forEach(m => {
+            totalQty += m.quantity;
+          });
+        }
+      });
+
+      document.getElementById('totalTransactions').textContent = allTransactions.length;
+      document.getElementById('totalRevenue').textContent = 'MK ' + totalRevenue.toFixed(2);
+      document.getElementById('avgTransaction').textContent = allTransactions.length > 0 ? 'MK ' + (totalRevenue / allTransactions.length).toFixed(2) : 'MK 0.00';
+      document.getElementById('totalQuantity').textContent = totalQty;
+    }
+
+    function applyFilters() {
+      const searchCustomer = document.getElementById('searchCustomer').value.toLowerCase();
+      const paymentMethod = document.getElementById('filterPaymentMethod').value;
+      const startDate = document.getElementById('filterStartDate').value ? new Date(document.getElementById('filterStartDate').value) : null;
+      const endDate = document.getElementById('filterEndDate').value ? new Date(document.getElementById('filterEndDate').value) : null;
+
+      const allTransactions = db.getTransactions();
+
+      filteredTransactions = allTransactions.filter(t => {
+        // Customer search
+        if (searchCustomer && !t.customer.toLowerCase().includes(searchCustomer) && !t.phone.includes(searchCustomer)) {
+          return false;
+        }
+
+        // Payment method filter
+        if (paymentMethod && t.paymentMethod !== paymentMethod) {
+          return false;
+        }
+
+        // Date range filter
+        const txDate = new Date(t.date);
+        if (startDate && txDate < startDate) return false;
+        if (endDate) {
+          endDate.setHours(23, 59, 59, 999);
+          if (txDate > endDate) return false;
+        }
+
+        return true;
+      }).reverse();
+
+      currentPage = 1;
+      displayTransactions();
+      showNotification('✅ Filters applied successfully!', 'success');
+    }
+
+    function resetFilters() {
+      document.getElementById('searchCustomer').value = '';
+      document.getElementById('filterPaymentMethod').value = '';
+      document.getElementById('filterStartDate').value = '';
+      document.getElementById('filterEndDate').value = '';
+      loadTransactions();
+      showNotification('✅ Filters reset', 'success');
+    }
+
+    function displayTransactions() {
+      const transactionsList = document.getElementById('transactionsList');
+      const startIdx = (currentPage - 1) * itemsPerPage;
+      const endIdx = startIdx + itemsPerPage;
+      const pageTransactions = filteredTransactions.slice(startIdx, endIdx);
+
+      if (pageTransactions.length === 0) {
+        transactionsList.innerHTML = '<div class="no-data">📭 No transactions found. Try adjusting your filters.</div>';
+        document.getElementById('paginationSection').innerHTML = '';
+        return;
+      }
+
+      transactionsList.innerHTML = '';
+
+      pageTransactions.forEach((transaction, index) => {
+        const date = new Date(transaction.date).toLocaleString('en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+
+        const medicinesHTML = transaction.medicines.map(m => `
+          <div class="medicine-item">
+            <div class="medicine-info">
+              <strong>${m.name}</strong> × ${m.quantity} @ MK ${m.price.toFixed(2)}
+            </div>
+            <div class="medicine-amount">MK ${(m.price * m.quantity).toFixed(2)}</div>
+          </div>
+        `).join('');
+
+        const card = document.createElement('div');
+        card.className = 'transaction-card';
+        card.innerHTML = `
+          <div class="transaction-header">
+            <div>
+              <div class="transaction-id">TXN-${transaction.id}</div>
+              <div class="transaction-date">${date}</div>
+            </div>
+            <span class="status-badge status-active">${transaction.paymentMethod}</span>
+          </div>
+
+          <div class="transaction-details">
+            <div class="detail-item">
+              <div class="detail-label"> Customer</div>
+              <div class="detail-value">${transaction.customer}</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label"> Phone</div>
+              <div class="detail-value">${transaction.phone || 'N/A'}</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label"> Items</div>
+              <div class="detail-value">${transaction.medicines.length} item(s)</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label"> Total Amount</div>
+              <div class="detail-value">MK ${transaction.total.toFixed(2)}</div>
+            </div>
+          </div>
+
+          <div class="medicines-list">
+            ${medicinesHTML}
+          </div>
+
+          <div class="transaction-footer">
+            <div>
+              <span style="color: #64748b; font-size: 12px;">Subtotal: MK ${transaction.subtotal.toFixed(2)}</span>
+              <span style="color: #64748b; font-size: 12px; margin-left: 16px;">Tax: MK ${transaction.tax.toFixed(2)}</span>
+            </div>
+            <div class="transaction-total">Total: MK ${transaction.total.toFixed(2)}</div>
+          </div>
+        `;
+
+        transactionsList.appendChild(card);
+      });
+
+      // Update pagination
+      updatePagination();
+    }
+
+    function updatePagination() {
+      const totalPages = Math.ceil(filteredTransactions.length / itemsPerPage);
+      const paginationSection = document.getElementById('paginationSection');
+      paginationSection.innerHTML = '';
+
+      if (totalPages <= 1) return;
+
+      // Previous button
+      const prevBtn = document.createElement('button');
+      prevBtn.textContent = '← Previous';
+      prevBtn.disabled = currentPage === 1;
+      prevBtn.onclick = () => {
+        if (currentPage > 1) {
+          currentPage--;
+          displayTransactions();
+          window.scrollTo(0, 0);
+        }
+      };
+      paginationSection.appendChild(prevBtn);
+
+      // Page numbers
+      for (let i = 1; i <= totalPages; i++) {
+        const pageBtn = document.createElement('button');
+        pageBtn.textContent = i;
+        pageBtn.className = i === currentPage ? 'active' : '';
+        pageBtn.onclick = () => {
+          currentPage = i;
+          displayTransactions();
+          window.scrollTo(0, 0);
+        };
+        paginationSection.appendChild(pageBtn);
+      }
+
+      // Next button
+      const nextBtn = document.createElement('button');
+      nextBtn.textContent = 'Next →';
+      nextBtn.disabled = currentPage === totalPages;
+      nextBtn.onclick = () => {
+        if (currentPage < totalPages) {
+          currentPage++;
+          displayTransactions();
+          window.scrollTo(0, 0);
+        }
+      };
+      paginationSection.appendChild(nextBtn);
+    }
+
+    // Load transactions on page load
+    document.addEventListener('DOMContentLoaded', loadTransactions);
+  </script>
+</body>
+</html>
