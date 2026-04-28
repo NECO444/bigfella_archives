@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Vertex Tech Solutions</title>
+  <link rel="canonical" href="https://vertextechsolutions.com/privacy.html" />
+  <!-- ============================================================
+       FAVICON & BROWSER ICON
+  ============================================================ -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+
+  <!-- ============================================================
+       SEO — Primary Meta Tags
+  ============================================================ -->
+  <meta name="title" content="Privacy Policy — Vertex Tech Solutions" />
+  <meta name="description" content="Read the Vertex Tech Solutions Privacy Policy to understand how we collect, use, and protect your personal information when you contact us or use our services." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Vertex Tech Solutions" />
+  <meta name="theme-color" content="#00d8c8" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vertextechsolutions.com/privacy.html" />
+  <meta property="og:title" content="Privacy Policy — Vertex Tech Solutions" />
+  <meta property="og:description" content="How Vertex Tech Solutions collects, uses, and protects your personal information." />
+  <meta property="og:image" content="https://vertextechsolutions.com/og-image.png" />
+
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <style>
+    /* ── Variables (matching main site) ───────────────────── */
+    :root {
+      --bg:           #080b12;
+      --bg-card:      #0e1420;
+      --bg-nav:       rgba(8,11,18,0.88);
+      --bg-footer:    #050810;
+      --accent:       #00d8c8;
+      --accent-2:     #7b5ef8;
+      --accent-rgb:   0, 216, 200;
+      --text:         #e8eaf2;
+      --text-muted:   #6b7280;
+      --text-heading: #ffffff;
+      --border:       rgba(255,255,255,0.07);
+      --shadow-card:  0 8px 32px rgba(0,0,0,0.45);
+      --orb-1:        rgba(0,216,200,0.10);
+      --orb-2:        rgba(123,94,248,0.10);
+      --font-head:    'Syne', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+      --ease:         cubic-bezier(0.4,0,0.2,1);
+      --t:            0.35s cubic-bezier(0.4,0,0.2,1);
+      --radius:       14px;
+    }
+    [data-theme="light"] {
+      --bg:           #f0f4f8;
+      --bg-card:      #ffffff;
+      --bg-nav:       rgba(240,244,248,0.92);
+      --bg-footer:    #dde4ee;
+      --text:         #0f172a;
+      --text-muted:   #64748b;
+      --text-heading: #0f172a;
+      --border:       rgba(0,0,0,0.09);
+      --shadow-card:  0 4px 24px rgba(0,0,0,0.08);
+      --orb-1:        rgba(0,200,190,0.12);
+      --orb-2:        rgba(123,94,248,0.10);
+    }
+
+    /* ── Reset ────────────────────────────────────────────── */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      transition: background-color var(--t), color var(--t);
+    }
+    a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+    a:hover { opacity: 0.8; }
+    ul { list-style: none; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+    svg[data-lucide] {
+      display: inline-block; width:1em; height:1em;
+      stroke: currentColor; stroke-width:2;
+      stroke-linecap: round; stroke-linejoin: round;
+      fill: none; vertical-align: middle; flex-shrink:0;
+    }
+
+    /* ── Navbar ───────────────────────────────────────────── */
+    #navbar {
+      position: fixed; top:0; left:0; right:0; z-index:1000;
+      padding: 16px 0;
+      background: var(--bg-nav);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: background-color var(--t);
+    }
+    .nav-container {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .logo {
+      display: flex; align-items: center;
+    }
+    .logo-img {
+      height: 42px;
+      width: auto;
+      display: block;
+      transition: transform 0.35s ease, filter 0.35s ease;
+    }
+    .logo-dark      { display: block; filter: drop-shadow(0 0 10px rgba(0,216,200,0.35)); }
+    .logo-light-img { display: none; }
+    [data-theme="light"] .logo-dark      { display: none; }
+    [data-theme="light"] .logo-light-img { display: block; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.12)); }
+    .logo:hover .logo-img { transform: scale(1.05); }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.88rem; font-weight: 500; color: var(--text-muted);
+      padding: 8px 16px; border-radius: 50px;
+      border: 1px solid var(--border);
+      transition: color var(--t), border-color var(--t);
+    }
+    .nav-back:hover { color: var(--accent); border-color: var(--accent); opacity: 1; }
+    .nav-back svg { width:14px; height:14px; }
+
+    /* Theme toggle */
+    .theme-toggle {
+      display:flex; align-items:center; justify-content:center;
+      width:36px; height:36px; border-radius:50%;
+      border: 1px solid var(--border); background:transparent;
+      cursor:pointer; color:var(--text);
+      transition: border-color var(--t), background-color var(--t), color var(--t);
+    }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); background: rgba(var(--accent-rgb),0.1); }
+    .theme-toggle svg { width:15px; height:15px; }
+
+    /* ── Hero strip ──────────────────────────────────────── */
+    .policy-hero {
+      position: relative; overflow: hidden;
+      padding: 140px 24px 80px;
+      text-align: center;
+      background: var(--bg);
+    }
+    .policy-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 20% 50%, var(--orb-1), transparent),
+        radial-gradient(ellipse 50% 60% at 80% 40%, var(--orb-2), transparent);
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(0,216,200,0.08) 1px, transparent 1px);
+      background-size: 44px 44px;
+      pointer-events: none;
+    }
+    .policy-hero-inner { position: relative; z-index:2; max-width: 700px; margin: 0 auto; }
+    .policy-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(var(--accent-rgb),0.3);
+      padding: 6px 16px; border-radius: 50px; margin-bottom: 24px;
+    }
+    .policy-badge svg { width: 13px; height: 13px; }
+    .policy-hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800; line-height: 1.1;
+      color: var(--text-heading);
+      margin-bottom: 16px;
+    }
+    .policy-hero h1 span {
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .policy-hero p {
+      color: var(--text-muted); font-size: 1rem; max-width: 480px; margin: 0 auto;
+    }
+    .policy-meta {
+      display: flex; justify-content: center; gap: 24px; margin-top: 28px;
+      flex-wrap: wrap;
+    }
+    .meta-pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 0.8rem; color: var(--text-muted);
+      background: var(--bg-card); border: 1px solid var(--border);
+      padding: 7px 14px; border-radius: 40px;
+    }
+    .meta-pill svg { width: 13px; height: 13px; color: var(--accent); }
+
+    /* ── Main content ─────────────────────────────────────── */
+    .policy-body {
+      max-width: 800px; margin: 0 auto;
+      padding: 72px 24px 100px;
+    }
+
+    /* Table of contents */
+    .toc {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 56px;
+      position: relative; overflow: hidden;
+    }
+    .toc::before {
+      content: '';
+      position: absolute; top:0; left:0; right:0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+    .toc h2 {
+      font-family: var(--font-head); font-size: 0.8rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 16px;
+    }
+    .toc ol {
+      list-style: none;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px;
+    }
+    .toc ol li { counter-increment: toc-counter; }
+    .toc ol li a {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.88rem; color: var(--text-muted);
+      padding: 5px 0; transition: color var(--t);
+    }
+    .toc ol li a:hover { color: var(--accent); opacity: 1; }
+    .toc ol li a::before {
+      content: counter(toc-counter, decimal-leading-zero);
+      font-family: var(--font-head);
+      font-size: 0.72rem; font-weight: 700;
+      color: var(--accent); opacity: 0.6;
+      flex-shrink: 0;
+    }
+    @media (max-width: 600px) { .toc ol { grid-template-columns: 1fr; } }
+
+    /* Policy sections */
+    .policy-section {
+      margin-bottom: 52px;
+      padding-bottom: 52px;
+      border-bottom: 1px solid var(--border);
+    }
+    .policy-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .section-num {
+      display: inline-block;
+      font-family: var(--font-head); font-size: 0.72rem; font-weight: 700;
+      color: var(--accent); letter-spacing: 0.14em;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .policy-section h2 {
+      font-family: var(--font-head);
+      font-size: 1.4rem; font-weight: 800;
+      color: var(--text-heading); margin-bottom: 18px; line-height: 1.2;
+    }
+    .policy-section p {
+      font-size: 0.95rem; color: var(--text-muted);
+      line-height: 1.85; margin-bottom: 14px;
+    }
+    .policy-section p:last-child { margin-bottom: 0; }
+
+    /* Highlight box */
+    .highlight-box {
+      background: rgba(var(--accent-rgb), 0.05);
+      border: 1px solid rgba(var(--accent-rgb), 0.2);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+
+    /* Data list */
+    .data-list {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 10px;
+      margin: 16px 0;
+    }
+    .data-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 0.92rem; color: var(--text-muted);
+    }
+    .data-list li::before {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    /* Third party card */
+    .third-party-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      margin: 16px 0;
+      display: flex; align-items: flex-start; gap: 16px;
+    }
+    .tp-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: rgba(var(--accent-rgb), 0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); flex-shrink: 0;
+    }
+    .tp-icon svg { width: 18px; height: 18px; }
+    .tp-card-title {
+      font-family: var(--font-head); font-size: 0.9rem; font-weight: 700;
+      color: var(--text-heading); margin-bottom: 4px;
+    }
+    .tp-card-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* Contact box */
+    .contact-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px; margin-top: 20px;
+      position: relative; overflow: hidden;
+    }
+    .contact-box::before {
+      content: '';
+      position: absolute; top:0; left:0; right:0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+    .contact-box p {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.92rem; color: var(--text-muted); margin-bottom: 10px;
+    }
+    .contact-box p:last-child { margin-bottom: 0; }
+    .contact-box svg { color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .contact-box a { color: var(--accent); }
+
+    /* ── Footer ──────────────────────────────────────────── */
+    footer {
+      background: var(--bg-footer);
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+      font-size: 0.82rem; color: var(--text-muted);
+    }
+    .footer-inner a {
+      color: var(--text-muted);
+      border-bottom: 1px solid transparent;
+      transition: color var(--t), border-color var(--t);
+    }
+    .footer-inner a:hover { color: var(--accent); border-bottom-color: var(--accent); opacity: 1; }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header id="navbar">
+    <nav class="nav-container">
+      <a href="index.html" class="logo" aria-label="Vertex Tech Solutions">
+        <img src="logo.png"       alt="Vertex Tech Solutions" class="logo-img logo-dark" />
+        <img src="logo-light.png" alt="Vertex Tech Solutions" class="logo-img logo-light-img" />
+      </a>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <a href="index.html" class="nav-back">
+          <i data-lucide="arrow-left" aria-hidden="true"></i>
+          Back to Site
+        </a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode">
+          <i data-lucide="sun" aria-hidden="true"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <div class="policy-hero">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="policy-hero-inner">
+      <div class="policy-badge">
+        <i data-lucide="shield-check" aria-hidden="true"></i>
+        Legal Document
+      </div>
+      <h1>Privacy <span>Policy</span></h1>
+      <p>How Vertex Tech Solutions collects, uses, and protects your personal information.</p>
+      <div class="policy-meta">
+        <span class="meta-pill">
+          <i data-lucide="calendar" aria-hidden="true"></i>
+          Effective: 30 March 2026
+        </span>
+        <span class="meta-pill">
+          <i data-lucide="map-pin" aria-hidden="true"></i>
+          Blantyre, Malawi
+        </span>
+        <span class="meta-pill">
+          <i data-lucide="clock" aria-hidden="true"></i>
+          5 min read
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <main class="policy-body">
+
+    <!-- Table of Contents -->
+    <nav class="toc" aria-label="Table of contents">
+      <h2>Contents</h2>
+      <ol>
+        <li><a href="#s1">Who We Are</a></li>
+        <li><a href="#s2">Data We Collect</a></li>
+        <li><a href="#s3">How We Use Your Data</a></li>
+        <li><a href="#s4">Third-Party Services</a></li>
+        <li><a href="#s5">Data Retention</a></li>
+        <li><a href="#s6">Your Rights</a></li>
+        <li><a href="#s7">Data Security</a></li>
+        <li><a href="#s8">Cookies</a></li>
+        <li><a href="#s9">Changes to Policy</a></li>
+        <li><a href="#s10">Contact Us</a></li>
+      </ol>
+    </nav>
+
+    <!-- 1. Who We Are -->
+    <section class="policy-section" id="s1">
+      <span class="section-num">01</span>
+      <h2>Who We Are</h2>
+      <p>
+        Vertex Tech Solutions is a technology services company based in Blantyre, Malawi.
+        We provide IT support, network setup, cybersecurity training, website development,
+        and digital media services to businesses and individuals.
+      </p>
+      <p>
+        This Privacy Policy explains how we handle personal information collected through
+        our website at vertextechsolutions.com, including our contact form. We are committed
+        to protecting your privacy and handling your data responsibly.
+      </p>
+      <div class="highlight-box">
+        By using our website or submitting the contact form, you agree to the terms described in this Privacy Policy.
+      </div>
+    </section>
+
+    <!-- 2. Data We Collect -->
+    <section class="policy-section" id="s2">
+      <span class="section-num">02</span>
+      <h2>Data We Collect</h2>
+      <p>
+        We only collect information that you voluntarily provide to us. We do not track
+        you across other websites, and we do not collect data silently in the background.
+      </p>
+      <p>When you submit our contact form, we collect:</p>
+      <ul class="data-list">
+        <li><strong>Full Name</strong> — so we know who we are speaking with</li>
+        <li><strong>Email Address</strong> — to respond to your enquiry</li>
+        <li><strong>Phone Number</strong> — optional, for call-back requests</li>
+        <li><strong>Organisation</strong> — optional, to understand your business context</li>
+        <li><strong>Service Interest</strong> — which of our six core services you require</li>
+        <li><strong>Message</strong> — the details of your enquiry</li>
+        <li><strong>Privacy Agreement</strong> — confirmation that you have read and accepted this policy before submitting</li>
+      </ul>
+      <p>
+        We do not collect payment details, government ID numbers, or any sensitive
+        personal categories of data through this website.
+      </p>
+    </section>
+
+    <!-- 3. How We Use Your Data -->
+    <section class="policy-section" id="s3">
+      <span class="section-num">03</span>
+      <h2>How We Use Your Data</h2>
+      <p>The information you provide is used solely for the following purposes:</p>
+      <ul class="data-list">
+        <li>To respond to your enquiry or service request promptly</li>
+        <li>To provide a quote or consultation for the specific service(s) you selected — Setup &amp; Installation, Network Setup &amp; Security, IT Support &amp; Maintenance, Cybersecurity Awareness, Website Development &amp; Hosting, or Digital Media &amp; Content</li>
+        <li>To follow up if we need clarification on your project requirements</li>
+        <li>To assign the most suitable team member to your request</li>
+        <li>To improve the quality of our services based on the types of enquiries we receive</li>
+      </ul>
+      <p>
+        We collect and process your data on the basis of your <strong>explicit consent</strong>,
+        which you provide by ticking the privacy agreement toggle on our contact form before
+        submitting your enquiry. You may withdraw this consent at any time by contacting us.
+      </p>
+      <p>
+        We will <strong>never</strong> sell your personal information to third parties.
+        We will <strong>never</strong> use your data for unsolicited marketing without
+        your further explicit permission.
+      </p>
+    </section>
+
+    <!-- 4. Third-Party Services -->
+    <section class="policy-section" id="s4">
+      <span class="section-num">04</span>
+      <h2>Third-Party Services</h2>
+      <p>
+        Our contact form is processed by Formspree, a third-party form handling service.
+        When you submit the form, your data is transmitted through Formspree's servers
+        before being delivered to our email inbox.
+      </p>
+      <div class="third-party-card">
+        <div class="tp-icon"><i data-lucide="send" aria-hidden="true"></i></div>
+        <div>
+          <p class="tp-card-title">Formspree</p>
+          <p class="tp-card-desc">
+            Handles contact form submissions. Formspree may temporarily store your
+            submission data as part of delivery. They operate under their own
+            <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.
+          </p>
+        </div>
+      </div>
+      <div class="third-party-card">
+        <div class="tp-icon"><i data-lucide="type" aria-hidden="true"></i></div>
+        <div>
+          <p class="tp-card-title">Google Fonts</p>
+          <p class="tp-card-desc">
+            Our website loads fonts from Google Fonts. This may result in your browser
+            making a request to Google's servers. Google's use of this data is governed
+            by their <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>.
+          </p>
+        </div>
+      </div>
+      <p style="margin-top:16px;">
+        We have chosen these services carefully and only use reputable providers.
+        We do not use advertising networks, social tracking pixels, or analytics
+        services that monitor user behaviour on our site.
+      </p>
+    </section>
+
+    <!-- 5. Data Retention -->
+    <section class="policy-section" id="s5">
+      <span class="section-num">05</span>
+      <h2>Data Retention</h2>
+      <p>
+        Enquiries submitted through the contact form are received in our email inbox
+        (vertextech265@gmail.com) and are retained only as long as necessary to
+        respond to and resolve your request.
+      </p>
+      <p>
+        Once an enquiry has been resolved and no ongoing service relationship exists,
+        we delete contact form data within <strong>12 months</strong> of the last
+        communication. If you become a client of Vertex Tech Solutions, your information
+        may be retained for as long as we have an active working relationship, plus any
+        period required for legal or accounting purposes.
+      </p>
+    </section>
+
+    <!-- 6. Your Rights -->
+    <section class="policy-section" id="s6">
+      <span class="section-num">06</span>
+      <h2>Your Rights</h2>
+      <p>You have the following rights regarding your personal data:</p>
+      <ul class="data-list">
+        <li><strong>Right to Access</strong> — request a copy of the data we hold about you</li>
+        <li><strong>Right to Correction</strong> — ask us to correct inaccurate information</li>
+        <li><strong>Right to Deletion</strong> — request that we delete your personal data</li>
+        <li><strong>Right to Object</strong> — object to how we are using your data</li>
+        <li><strong>Right to Withdraw Consent</strong> — at any time, for any reason</li>
+      </ul>
+      <p>
+        To exercise any of these rights, please contact us using the details in
+        Section 10 below. We will respond to all requests within <strong>30 days</strong>.
+      </p>
+    </section>
+
+    <!-- 7. Data Security -->
+    <section class="policy-section" id="s7">
+      <span class="section-num">07</span>
+      <h2>Data Security</h2>
+      <p>
+        We take reasonable technical and organisational measures to protect your personal
+        information from unauthorised access, loss, or misuse. Our contact form uses
+        HTTPS encryption in transit, and access to our email inbox is protected by
+        strong passwords and two-factor authentication.
+      </p>
+      <p>
+        While we do our best to protect your data, no method of transmission over the
+        internet is 100% secure. If you have concerns about sharing sensitive information,
+        please contact us by phone instead.
+      </p>
+    </section>
+
+    <!-- 8. Cookies -->
+    <section class="policy-section" id="s8">
+      <span class="section-num">08</span>
+      <h2>Cookies</h2>
+      <p>
+        Our website uses a single functional cookie to remember your preferred theme
+        (dark or light mode). This is stored locally in your browser using
+        <code style="font-family:monospace;font-size:0.85em;background:var(--bg-card);
+        padding:2px 6px;border-radius:4px;color:var(--accent);">localStorage</code>
+        and is never sent to our servers.
+      </p>
+      <p>
+        We do not use tracking cookies, advertising cookies, or analytics cookies.
+        No cookie consent banner is required for this site as we do not use
+        any cookies that require consent under applicable regulations.
+      </p>
+    </section>
+
+    <!-- 9. Changes to Policy -->
+    <section class="policy-section" id="s9">
+      <span class="section-num">09</span>
+      <h2>Changes to This Policy</h2>
+      <p>
+        We may update this Privacy Policy from time to time to reflect changes in our
+        practices or for legal, operational, or regulatory reasons. When we make
+        significant changes, we will update the "Effective Date" at the top of this page.
+      </p>
+      <p>
+        We encourage you to review this page periodically. Your continued use of our
+        website after any changes constitutes your acceptance of the updated policy.
+      </p>
+    </section>
+
+    <!-- 10. Contact Us -->
+    <section class="policy-section" id="s10">
+      <span class="section-num">10</span>
+      <h2>Contact Us</h2>
+      <p>
+        If you have any questions about this Privacy Policy, wish to exercise your
+        data rights, or have a privacy concern, please reach out to us directly:
+      </p>
+      <div class="contact-box">
+        <p><i data-lucide="building-2" aria-hidden="true"></i> <strong style="color:var(--text);">Vertex Tech Solutions</strong></p>
+        <p><i data-lucide="map-pin" aria-hidden="true"></i> Blantyre, Malawi</p>
+        <p><i data-lucide="mail" aria-hidden="true"></i> <a href="mailto:vertextech265@gmail.com">vertextech265@gmail.com</a></p>
+        <p><i data-lucide="phone" aria-hidden="true"></i> <a href="tel:+2650882438460">+265 0882 438 460</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <p>&copy; <span id="year"></span> Vertex Tech Solutions. All rights reserved.</p>
+      <a href="terms.html">Terms &amp; Conditions</a>
+      <a href="index.html">← Back to Main Site</a>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle
+    (function () {
+      var saved = localStorage.getItem('vts-theme');
+      var theme = 'dark';
+      if (saved === 'light' || saved === 'dark') theme = saved;
+      else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) theme = 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+
+      var btn = document.getElementById('themeToggle');
+      if (btn) {
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('vts-theme', next);
+          btn.setAttribute('aria-label', next === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+          if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
+      }
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+    });
+  </script>
+
+</body>
+</html>

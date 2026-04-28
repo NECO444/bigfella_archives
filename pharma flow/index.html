@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vertex Tech Solutions — IT Services in Malawi</title>
+  <link rel="canonical" href="https://vertextechsolutions.com/" />
+  <!-- ============================================================
+       FAVICON & BROWSER ICON
+  ============================================================ -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+
+  <!-- ============================================================
+       SEO — Primary Meta Tags
+  ============================================================ -->
+  <meta name="title" content="Vertex Tech Solutions — IT Services in Malawi" />
+  <meta name="description" content="Vertex Tech Solutions is Malawi's trusted technology partner. We provide IT setup, network security, cybersecurity training, website development, and digital media services in Blantyre and beyond." />
+  <meta name="keywords" content="IT services Malawi, tech support Blantyre, network setup Malawi, cybersecurity Malawi, website development Malawi, digital media Malawi, Vertex Tech Solutions" />
+  <meta name="author" content="Vertex Tech Solutions" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#00d8c8" />
+
+  <!-- ============================================================
+       SEO — Open Graph (Facebook, WhatsApp, LinkedIn previews)
+  ============================================================ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vertextechsolutions.com/" />
+  <meta property="og:title" content="Vertex Tech Solutions — IT Services in Malawi" />
+  <meta property="og:description" content="From cybersecurity to web development — Vertex Tech Solutions delivers end-to-end IT services tailored for schools, modern businesses and individuals in Malawi." />
+  <meta property="og:image" content="https://vertextechsolutions.com/og-image.png" />
+  <meta property="og:site_name" content="Vertex Tech Solutions" />
+  <meta property="og:locale" content="en_MW" />
+
+  <!-- ============================================================
+       SEO — Twitter / X Card
+  ============================================================ -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Vertex Tech Solutions — IT Services in Malawi" />
+  <meta name="twitter:description" content="From cybersecurity to web development — Vertex Tech Solutions delivers end-to-end IT services tailored for schools, modern businesses and individuals in Malawi." />
+  <meta name="twitter:image" content="https://vertextechsolutions.com/og-image.png" />
+
+  <!-- ============================================================
+       SEO — Structured Data (Google Rich Results)
+  ============================================================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Vertex Tech Solutions",
+    "description": "Full-service technology company based in Malawi providing IT support, network setup, cybersecurity training, website development, and digital media services.",
+    "url": "https://vertextechsolutions.com",
+    "logo": "https://vertextechsolutions.com/icon-192.png",
+    "image": "https://vertextechsolutions.com/og-image.png",
+    "email": "vertextech265@gmail.com",
+    "telephone": ["+2650882438460", "+2650888570362", "+2650983452153"],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Blantyre",
+      "addressCountry": "MW"
+    },
+    "openingHours": "Mo-Sa 08:00-18:00",
+    "priceRange": "$$",
+    "areaServed": "Malawi",
+    "sameAs": [],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "IT Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Setup & Installation" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Network Setup & Security" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "IT Support & Maintenance" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cybersecurity Awareness" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website Development & Hosting" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Digital Media & Content" } }
+      ]
+    }
+  }
+  </script>
+
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!--
+    Inline theme init — runs before first paint to prevent flash.
+    Priority: localStorage → OS prefers-color-scheme → default "dark"
+  -->
+  <script>
+    (function () {
+      var saved = localStorage.getItem('vts-theme');
+      var theme = 'dark';
+      if (saved === 'light' || saved === 'dark') {
+        theme = saved;
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        theme = 'light';
+      }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVIGATION BAR
+  ============================================================ -->
+  <header id="navbar">
+    <nav class="nav-container">
+
+      <!-- Logo -->
+      <a href="#home" class="logo" aria-label="Vertex Tech Solutions">
+        <img src="logo.png"       alt="Vertex Tech Solutions" class="logo-img logo-dark" />
+        <img src="logo-light.png" alt="Vertex Tech Solutions" class="logo-img logo-light-img" />
+      </a>
+
+      <!-- Desktop links -->
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home"     class="nav-link">Home</a></li>
+        <li><a href="#about"    class="nav-link">About</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#team"     class="nav-link">Team</a></li>
+        <li><a href="#contact-section" class="nav-link nav-cta">Contact Us</a></li>
+      </ul>
+
+      <!-- Right controls -->
+      <div class="nav-controls">
+        <!-- Theme toggle: sun shown in dark mode, moon in light mode -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode">
+          <i data-lucide="sun" id="themeIcon" aria-hidden="true"></i>
+        </button>
+
+        <!-- Hamburger (mobile) -->
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </nav>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <ul>
+        <li><a href="#home"     class="mob-link">Home</a></li>
+        <li><a href="#about"    class="mob-link">About</a></li>
+        <li><a href="#services" class="mob-link">Services</a></li>
+        <li><a href="#team"     class="mob-link">Team</a></li>
+        <li><a href="#contact-section" class="mob-link">Contact Us</a></li>
+      </ul>
+    </div>
+  </header>
+
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section id="home" class="hero">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="orb orb-1"  aria-hidden="true"></div>
+    <div class="orb orb-2"  aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <p class="hero-tag">Your Local Technology Partner</p>
+      <h1 class="hero-title">
+        Powering the<br />
+        <span class="gradient-text">Digital Future</span><br />
+        of Malawi
+      </h1>
+      <p class="hero-sub">
+        From cybersecurity to web development — Vertex Tech Solutions delivers
+        end-to-end IT services tailored for schools, modern businesses and individuals.
+      </p>
+      <div class="hero-actions">
+        <a href="#services" class="btn btn-primary">
+          <i data-lucide="zap" aria-hidden="true"></i>
+          Explore Services
+        </a>
+        <a href="#contact-section" class="btn btn-ghost">
+          <i data-lucide="mail" aria-hidden="true"></i>
+          Get in Touch
+        </a>
+      </div>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true"><span></span></div>
+  </section>
+
+
+  <!-- ============================================================
+       ABOUT
+  ============================================================ -->
+  <section id="about" class="about-strip">
+    <div class="container">
+      <div class="about-inner">
+
+        <div class="about-text reveal">
+          <p class="section-label">Who We Are</p>
+          <h2>Smart Solutions.<br />Real Results.</h2>
+          <p>
+            Vertex Tech Solutions is a full-service technology company based in
+            Malawi. We combine technical expertise with hands-on support to keep
+            your systems running, your data safe, and your digital presence thriving.
+          </p>
+        </div>
+
+        <div class="about-stats reveal">
+          <div class="stat">
+            <i data-lucide="users" class="stat-icon" aria-hidden="true"></i>
+            <div class="stat-row">
+              <span class="stat-number" data-target="40">0</span>
+              <span class="stat-suffix">+</span>
+            </div>
+            <p>Clients Served</p>
+          </div>
+          <div class="stat">
+            <i data-lucide="layers" class="stat-icon" aria-hidden="true"></i>
+            <div class="stat-row">
+              <span class="stat-number" data-target="6">0</span>
+            </div>
+            <p>Core Services</p>
+          </div>
+          <div class="stat">
+            <i data-lucide="heart" class="stat-icon" aria-hidden="true"></i>
+            <div class="stat-row">
+              <span class="stat-number" data-target="99">0</span>
+              <span class="stat-suffix">%</span>
+            </div>
+            <p>Satisfaction Rate</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SERVICES
+  ============================================================ -->
+  <section id="services" class="services">
+    <div class="container">
+
+      <div class="section-header reveal">
+        <p class="section-label">What We Offer</p>
+        <h2>Our Core Services</h2>
+        <p class="section-sub">
+          Everything your business needs to thrive in the digital age — under one roof.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+
+        <!-- 01 Setup & Installation -->
+        <article class="card reveal" data-delay="0">
+          <div class="card-num" aria-hidden="true">01</div>
+          <div class="card-icon"><i data-lucide="monitor" aria-hidden="true"></i></div>
+          <h3>Setup &amp; Installation</h3>
+          <p class="card-tag">Windows &amp; macOS</p>
+          <p class="card-body">Professional installation and configuration of Windows and macOS systems. We set up hardware, install software, migrate data, and optimise performance so you're productive from day one.</p>
+          <a href="#contact-section" class="card-link">Get Started <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        </article>
+
+        <!-- 02 Network Setup & Security -->
+        <article class="card reveal" data-delay="100">
+          <div class="card-num" aria-hidden="true">02</div>
+          <div class="card-icon"><i data-lucide="network" aria-hidden="true"></i></div>
+          <h3>Network Setup &amp; Security</h3>
+          <p class="card-tag">Infrastructure</p>
+          <p class="card-body">From home offices to enterprise environments, we design, deploy, and secure reliable networks. Includes router configuration, firewall setup, Wi-Fi optimisation, and ongoing monitoring.</p>
+          <a href="#contact-section" class="card-link">Get Started <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        </article>
+
+        <!-- 03 IT Support & Maintenance -->
+        <article class="card reveal" data-delay="200">
+          <div class="card-num" aria-hidden="true">03</div>
+          <div class="card-icon"><i data-lucide="wrench" aria-hidden="true"></i></div>
+          <h3>IT Support &amp; Maintenance</h3>
+          <p class="card-tag">Ongoing Care</p>
+          <p class="card-body">Responsive helpdesk and on-site support for hardware faults, software issues, and system updates. Keep your technology running smoothly with our proactive maintenance plans.</p>
+          <a href="#contact-section" class="card-link">Get Started <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        </article>
+
+        <!-- 04 Cybersecurity -->
+        <article class="card reveal" data-delay="300">
+          <div class="card-num" aria-hidden="true">04</div>
+          <div class="card-icon"><i data-lucide="shield-check" aria-hidden="true"></i></div>
+          <h3>Cybersecurity Awareness</h3>
+          <p class="card-tag">Protection &amp; Training</p>
+          <p class="card-body">Equip your team with the knowledge to identify phishing, malware, and social-engineering threats. We provide training workshops, security audits, and best-practice guides.</p>
+          <a href="#contact-section" class="card-link">Get Started <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        </article>
+
+        <!-- 05 Website Development -->
+        <article class="card reveal" data-delay="400">
+          <div class="card-num" aria-hidden="true">05</div>
+          <div class="card-icon"><i data-lucide="code-2" aria-hidden="true"></i></div>
+          <h3>Website Development &amp; Hosting</h3>
+          <p class="card-tag">Digital Presence</p>
+          <p class="card-body">Custom-built, mobile-friendly websites designed to convert. We handle design, development, domain registration, and reliable hosting — with ongoing updates and support included.</p>
+          <a href="#contact-section" class="card-link">Get Started <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        </article>
+
+        <!-- 06 Digital Media -->
+        <article class="card reveal" data-delay="500">
+          <div class="card-num" aria-hidden="true">06</div>
+          <div class="card-icon"><i data-lucide="pen-tool" aria-hidden="true"></i></div>
+          <h3>Digital Media &amp; Content</h3>
+          <p class="card-tag">Creative Services</p>
+          <p class="card-body">From graphic design and video production to social media content and branding — we craft compelling digital media that tells your story and engages your audience.</p>
+          <a href="#contact-section" class="card-link">Get Started <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       TEAM
+  ============================================================ -->
+  <section id="team" class="team">
+    <div class="container">
+
+      <div class="section-header reveal">
+        <p class="section-label">The People Behind It</p>
+        <h2>Meet Our Founders</h2>
+        <p class="section-sub">
+          Passionate technologists united by one mission — making
+          world-class IT accessible to every business in Malawi.
+        </p>
+      </div>
+
+      <div class="team-grid">
+
+        <!-- Neco Chikula — CEO -->
+        <article class="team-card reveal" data-delay="0">
+          <div class="team-photo-wrap">
+            <img src="Neco.jpg" alt="Portrait of Neco Chikula" class="team-photo" onerror="this.style.display='none'" />
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Neco Chikula</h3>
+            <p class="team-role">Chief Executive Officer</p>
+            <p class="team-bio">
+              Visionary leader driving the strategic direction of Vertex Tech Solutions.
+              Neco brings entrepreneurial energy and a deep commitment to empowering
+              Malawian businesses through technology.
+            </p>
+            <div class="team-socials">
+              <a href="https://www.instagram.com/entreprenegrooo" target="_blank" rel="noopener" class="social-link instagram" aria-label="Neco on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Praise Masasa — COO -->
+        <article class="team-card reveal" data-delay="150">
+          <div class="team-photo-wrap">
+            <img src="Praise.jpg" alt="Portrait of Praise Masasa" class="team-photo" onerror="this.style.display='none'" />
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Praise Masasa</h3>
+            <p class="team-role">Chief Operating Officer</p>
+            <p class="team-bio">
+              The operational backbone of the company. Praise ensures every project
+              is delivered on time and every client receives the responsive,
+              high-quality service they deserve.
+            </p>
+            <div class="team-socials">
+              <a href="https://www.linkedin.com/in/praise-masasa" target="_blank" rel="noopener" class="social-link linkedin" aria-label="Praise on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+              <a href="https://www.instagram.com/mrmasasa" target="_blank" rel="noopener" class="social-link instagram" aria-label="Praise on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+              <a href="https://twitter.com/PTBDT10" target="_blank" rel="noopener" class="social-link twitter" aria-label="Praise on Twitter"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Idrissah Khalid — CTO -->
+        <article class="team-card reveal" data-delay="300">
+          <div class="team-photo-wrap">
+            <img src="Khalid.jpg" alt="Portrait of Idrissah Khalid" class="team-photo" onerror="this.style.display='none'" />
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Idrissah Khalid</h3>
+            <p class="team-role">Chief Technology Officer</p>
+            <p class="team-bio">
+              The technical mind behind Vertex Tech's solutions. Idrissah architects
+              robust, scalable systems and leads the engineering team with precision,
+              curiosity, and a passion for innovation.
+            </p>
+            <div class="team-socials">
+              <a href="https://www.linkedin.com/in/idrissah-khalid" target="_blank" rel="noopener" class="social-link linkedin" aria-label="Khalid on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+              <a href="https://www.instagram.com/access6641" target="_blank" rel="noopener" class="social-link instagram" aria-label="Khalid on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CTA BANNER
+  ============================================================ -->
+  <section class="cta-banner reveal">
+    <div class="cta-glow" aria-hidden="true"></div>
+    <div class="container">
+      <h2>Ready to upgrade your technology?</h2>
+      <p>Let's talk about what Vertex Tech Solutions can do for you.</p>
+      <a href="#contact-section" class="btn btn-primary">
+        <i data-lucide="send" aria-hidden="true"></i>
+        Contact Us Today
+      </a>
+    </div>
+  </section>
+
+
+
+  <!-- ============================================================
+       CONTACT FORM SECTION
+  ============================================================ -->
+  <section id="contact-section" class="contact-section reveal">
+    <div class="contact-bg-glow" aria-hidden="true"></div>
+    <div class="container">
+      <div class="contact-wrapper">
+
+        <!-- LEFT — Info Panel -->
+        <div class="contact-info">
+          <p class="section-label">Let's Talk</p>
+          <h2 class="contact-heading">Start a <span class="contact-accent">Conversation</span></h2>
+          <p class="contact-desc">Tell us what you need and we'll craft a solution that fits. Our team typically responds within 24 hours.</p>
+
+          <ul class="contact-details">
+            <li>
+              <span class="contact-icon"><i data-lucide="mail" aria-hidden="true"></i></span>
+              <div>
+                <span class="contact-detail-label">Email</span>
+                <a href="mailto:vertextech265@gmail.com">vertextech265@gmail.com</a>
+              </div>
+            </li>
+            <li>
+              <span class="contact-icon"><i data-lucide="phone" aria-hidden="true"></i></span>
+              <div>
+                <span class="contact-detail-label">Phone</span>
+                <a href="tel:+2650882438460">+265 0882 438 460</a>
+              </div>
+            </li>
+            <li>
+              <span class="contact-icon"><i data-lucide="map-pin" aria-hidden="true"></i></span>
+              <div>
+                <span class="contact-detail-label">Location</span>
+                <span>Blantyre, Malawi</span>
+              </div>
+            </li>
+          </ul>
+
+          <div class="contact-availability">
+            <span class="availability-dot"></span>
+            <span>Available Mon – Sat, 8am – 6pm CAT</span>
+          </div>
+        </div>
+
+        <!-- RIGHT — Form Panel -->
+        <div class="contact-form-wrap">
+          <form class="contact-form" action="https://formspree.io/f/xdkggqwk" method="POST" id="contactForm">
+
+            <div class="form-row">
+              <div class="form-float">
+                <input type="text" id="cf-name" name="name" placeholder=" " required />
+                <label for="cf-name">Full Name</label>
+                <span class="form-line"></span>
+              </div>
+              <div class="form-float">
+                <input type="email" id="cf-email" name="email" placeholder=" " required />
+                <label for="cf-email">Email Address</label>
+                <span class="form-line"></span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-float">
+                <input type="text" id="cf-phone" name="phone" placeholder=" " />
+                <label for="cf-phone">Phone Number <span class="optional">(optional)</span></label>
+                <span class="form-line"></span>
+              </div>
+              <div class="form-float">
+                <input type="text" id="cf-org" name="organisation" placeholder=" " />
+                <label for="cf-org">Organisation <span class="optional">(optional)</span></label>
+                <span class="form-line"></span>
+              </div>
+            </div>
+
+            <!-- Service Chips — matching actual services -->
+            <div class="service-chips-group">
+              <p class="chips-label">Service Needed <span class="optional">(select all that apply)</span></p>
+              <div class="service-chips">
+                <input type="checkbox" id="chip-setup" name="service[]" value="Setup & Installation" />
+                <label for="chip-setup">
+                  <i data-lucide="monitor" aria-hidden="true"></i>
+                  Setup &amp; Installation
+                </label>
+                <input type="checkbox" id="chip-net" name="service[]" value="Network Setup & Security" />
+                <label for="chip-net">
+                  <i data-lucide="network" aria-hidden="true"></i>
+                  Network Setup &amp; Security
+                </label>
+                <input type="checkbox" id="chip-support" name="service[]" value="IT Support & Maintenance" />
+                <label for="chip-support">
+                  <i data-lucide="wrench" aria-hidden="true"></i>
+                  IT Support &amp; Maintenance
+                </label>
+                <input type="checkbox" id="chip-cyber" name="service[]" value="Cybersecurity Awareness" />
+                <label for="chip-cyber">
+                  <i data-lucide="shield-check" aria-hidden="true"></i>
+                  Cybersecurity Awareness
+                </label>
+                <input type="checkbox" id="chip-web" name="service[]" value="Website Development & Hosting" />
+                <label for="chip-web">
+                  <i data-lucide="code-2" aria-hidden="true"></i>
+                  Website Development &amp; Hosting
+                </label>
+                <input type="checkbox" id="chip-media" name="service[]" value="Digital Media & Content" />
+                <label for="chip-media">
+                  <i data-lucide="pen-tool" aria-hidden="true"></i>
+                  Digital Media &amp; Content
+                </label>
+              </div>
+            </div>
+
+            <div class="form-float">
+              <textarea id="cf-message" name="message" rows="4" placeholder=" " required></textarea>
+              <label for="cf-message">Your Message</label>
+              <span class="form-line"></span>
+            </div>
+
+            <!-- Privacy Policy Agreement Toggle -->
+            <div class="privacy-toggle-wrap">
+              <label class="privacy-toggle" for="cf-privacy">
+                <input type="checkbox" id="cf-privacy" name="privacy_agreed" value="yes" required />
+                <span class="toggle-track">
+                  <span class="toggle-thumb"></span>
+                </span>
+                <span class="toggle-text">
+                  I have read and agree to the
+                  <a href="privacy.html" target="_blank">Privacy Policy</a>
+                  and <a href="terms.html" target="_blank">Terms &amp; Conditions</a>,
+                  and consent to Vertex Tech Solutions processing my personal data to respond to my enquiry.
+                </span>
+              </label>
+              <p class="privacy-toggle-error" id="privacy-error">
+                <i data-lucide="alert-circle" aria-hidden="true"></i>
+                Please accept the Privacy Policy and Terms &amp; Conditions to continue.
+              </p>
+            </div>
+
+            <button type="submit" class="btn btn-primary contact-submit" id="submitBtn">
+              <i data-lucide="send" aria-hidden="true"></i>
+              Send Message
+              <span class="btn-shimmer"></span>
+            </button>
+
+            <p class="form-success" id="form-success">
+              <i data-lucide="check-circle" aria-hidden="true"></i>
+              Message sent! We'll be in touch within 24 hours.
+            </p>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER / CONTACT
+  ============================================================ -->
+  <footer id="footer">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <!-- Brand -->
+        <div class="footer-brand">
+          <a href="#home" class="logo" aria-label="Vertex Tech Solutions">
+            <img src="logo.png"       alt="Vertex Tech Solutions" class="logo-img logo-dark" />
+            <img src="logo-light.png" alt="Vertex Tech Solutions" class="logo-img logo-light-img" />
+          </a>
+          <p>Your trusted technology partner in Malawi — delivering smart IT solutions for a connected world.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#contact-section">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li>Setup &amp; Installation</li>
+            <li>Network &amp; Security</li>
+            <li>IT Support</li>
+            <li>Cybersecurity</li>
+            <li>Web Development</li>
+            <li>Digital Media</li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-col footer-contact">
+          <h4>Contact Us</h4>
+          <p>
+            <i data-lucide="phone" class="footer-icon" aria-hidden="true"></i>
+            <a href="tel:+2650882438460">0882 438 460</a>
+          </p>
+          <p>
+            <i data-lucide="phone" class="footer-icon" aria-hidden="true"></i>
+            <a href="tel:+2650888570362">0888 570 362</a>
+          </p>
+          <p>
+            <i data-lucide="phone" class="footer-icon" aria-hidden="true"></i>
+            <a href="tel:+2650983452153">0983 452 153</a>
+          </p>
+            <p>
+            <i data-lucide="mail" class="footer-icon" aria-hidden="true"></i>
+            <a href="mailto:vertextech265@gmail.com">vertextech265@gmail.com</a>
+            </p>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> Vertex Tech Solutions. All rights reserved.</p>
+        <a href="privacy.html" class="footer-privacy-link">Privacy Policy</a>
+        <a href="terms.html" class="footer-privacy-link">Terms &amp; Conditions</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Script — loaded at end of body so DOM is ready -->
+  <script src="script.js"></script>
+
+</body>
+</html>
